@@ -1,5 +1,6 @@
 import express from "express";
 import userRouter from "./routes/user.js";
+import taskRouter from "./routes/task.js";
 import { connectDB } from "./data/database.js";
 import { config } from "dotenv";
 import cookieParser from "cookie-parser";
@@ -18,6 +19,7 @@ app.use(cookieParser());
 
 //Using routes
 app.use("/users", userRouter);
+app.use("/tasks", taskRouter);
 
 app.get("/", (req, res) => {
     res.send("Home Page");

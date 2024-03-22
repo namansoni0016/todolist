@@ -50,6 +50,7 @@ export const logoutUser = (req, res) => {
     res.status(200).cookie("token", "", {expires:new Date(Date.now())}).json({
         success: true,
         user: req.user,
+        message: "Logged out!"
     })
 }
 
