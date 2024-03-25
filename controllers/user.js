@@ -37,7 +37,10 @@ export const getMyDetails = (req, res) => {
 };
 
 export const logoutUser = (req, res) => {
-    res.status(200).cookie("token", "", {expires:new Date(Date.now())}).json({
+    res.status(200).cookie("token", "", {expires:new Date(Date.now()),
+        sameSite: process.env.NODE_ENV === "Developemnt" ? "Lax" : "none",
+        secure: process.env.NODE_ENV === "Development" ? false : true,
+    }).json({
         success: true,
         user: req.user,
         message: "Logged out!"
